@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <link rel="stylesheet" href="css/header.css">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" /> -->
+</head>
+<body>
+    <header class="header-container">
+        <div class="logo">
+            <a href="index.html">SITHO</a>
+        </div>
+                <div class="container-recherche">
+            <span class=" icon material-symbols-outlined" id="btn-search">search</span>
+            <form action="search.php" method="POST" class="recherchForm">
+                <input type="text" name="recherche" placeholder="Exposant...">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="actualite.php">Actualités</a></li>
+                <li><a href="activite.php">Activités</a></li>
+                <li><a href="partenaires.php">Partenaires</a></li>
+                <li><a href="galerie.php">Galeries</a></li>
+                <li><a  href="connexionAdmin.php">Administrateur</a></li>
+                <li class="contact"><a href="contact.php">Contact</a></li>
+            </ul>
+        </nav>
+        <span class="menu-hamberger material-symbols-outlined">menu</span>
+    </header>
+    <script>
+        /* JavaScript pour le menu hamburger */
+        const menuHamberger = document.querySelector('.menu-hamberger');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuHamberger.addEventListener('click', () => {
+            navLinks.classList.toggle('menu-mobile');
+        });
+
+        const navItems = document.querySelectorAll('.nav-links ul li a');
+        navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            const cheminActuel = window.location.href;
+
+            if (cheminActuel.includes(href) || (cheminActuel.endsWith('admin.php') && href === 'connexionAdmin.php')) {
+                item.classList.add('active');
+            }else if (cheminActuel.endsWith('index.html') && href === 'index.html') {
+                item.classList.add('active');
+            }
+
+        });
+                // créer un module de recherche
+        document.addEventListener('DOMContentLoaded', () =>{
+            const btnSearch = document.getElementById('btn-search');
+            const formRecherche = document.querySelector('.recherchForm');
+
+            btnSearch.addEventListener('click', () => {
+                formRecherche.classList.toggle('activer');
+            
+            if(formRecherche.classList.conatins('activer')){
+                formRecherche.querySelector('input').focus();
+            }
+            });
+        
+        // Fermer le champ de recherche lorsque l'utilisateur clique en dehors de celui-ci
+            document.addEventListener('click', (event) => {
+                if (!formRecherche.contains(event.target) && !btnSearch.contains(event.target)) {
+                    formRecherche.classList.remove('activer');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+:root{
+    --background-color: #FAFAE8;
+    --Partenaire-section-background-color: #F5E6C0;
+    --header-footer-activite: #1A1208;
+    --secondary-text-color: #6B6254;
+    --color-on-sombre: #FFFFFF;
+    --color-hover: #E8B84B;
+    --color-secondaire: #C9962A;
+
+    --font-family: 'Poppins, sans-serif';
+    --heading-font-family: 'Lora, serif';
+    --transition-speed: 0.3s;
+}
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    color: var(--secondary-text-color);
+}
+.container{
+    display: grid;
+    grid-template-columns: 
+    minmax(6rem, 1fr)
+    [start]
+    repeat(8, minmax(min-content, 14rem ))
+    [end]
+    minmax(6rem, 1fr);
+}
+.container h2{
+    grid-column: start/end;
+    text-align: center;
+    font-size: 3rem;
+}
+.grille{
+    grid-column: start/end;
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 5rem;
+}
+.carte_partenaire{
+    background-color: var(--color-on-sombre);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns:repeat(2, 1fr);
+    grid-row-gap: 0.5rem;
+    border: 1px solid black;
+}
+.img{
+    width: 50%; 
+    align-self: center;
+    grid-row: 1/2;
+    grid-column:  1/-1;
+}
+.img img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    display: block;
+}
+.carte_exposant{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns:repeat(2, 1fr);
+    grid-row-gap: 0.5rem;
+    border: 1px solid black;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.img_exposant{
+    width: 100%; 
+    grid-row: 1/2;
+    grid-column:  1/-1;
+    overflow: hidden;
+}
+.img_exposant img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    display: block;
+}
+.carte_partenaire h3{
+    font-family: var(--heading-font-family);
+    font-size: 1.5rem;
+}
+.carte_exposant h3{
+    font-family: var(--heading-font-family);
+    font-size: 1.5rem;
+}
+.carte_exposant:hover, .carte_partenaire:hover{
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
